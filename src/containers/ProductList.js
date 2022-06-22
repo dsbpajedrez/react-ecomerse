@@ -1,13 +1,28 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import ProductItem from '../components/ProductItem';
-import '../styles/ProductList.scss';
+import '@styles/ProductList.scss';
 
 const ProductList = () => {
+	const API_PRODUCTS ='https://api.escuelajs.co/api/v1/products'
+	const [productos, setProductos] = useState([])
+
+	useEffect(()=>{
+		fetch(API_PRODUCTS)
+			.then(respuesta => respuesta.json())
+			.then(data => {
+				setProductos(data)
+			})
+	},[])
 	return (
 		<section className="main-container">
 			<div className="ProductList">
-			{[1,2,3,4,5,6,7,8,9].map(item=>(
-				<ProductItem key={item} />
+			{productos.map(item=>(
+				<ProductItem 
+				key={item.id} 
+				price={item.price} 
+				image={item.category.image} 
+				article={item.title} 
+				/>
 			))}			
 			</div>
 		</section>
