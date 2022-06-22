@@ -1,14 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import '@styles/Header.scss';
-
+import Menu from './Menu';
 
 import menu from '@icons/icon_menu.svg'
 import logo from  '@logos/logo_yard_sale.svg'
 import shoppingCart from '@icons/icon_shopping_cart.svg'
 
 const Header = () => {
+	const [mostrarMenu, setMostrarMenu] = useState(false)
+
+	const toogleMenu = ()=>{
+		setMostrarMenu(!mostrarMenu)
+	}
 	return (
+		<>
 		<nav>
 			<img src={menu} alt="menu" className="menu" />
 			<div className="navbar-left">
@@ -34,16 +40,22 @@ const Header = () => {
 					</li>
 				</ul>
 			</div>
-			<div className="navbar-right">
+			<div onClick={toogleMenu} className="navbar-right">
 				<ul>
-					<li className="navbar-email">platzi@example.com</li>
+					<li className="navbar-email">david@hotmail.com</li>
 					<li className="navbar-shopping-cart">
 						<img src={shoppingCart} alt="shopping cart" />
 						<div>2</div>
 					</li>
-				</ul>
+				</ul>				
 			</div>
+			
+			
 		</nav>
+		<div className='mostrar-menu'>
+			{mostrarMenu && (<Menu/>)}
+		</div>
+		</>
 	);
 }
 
