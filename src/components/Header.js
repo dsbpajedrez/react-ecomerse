@@ -1,13 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import '@styles/Header.scss';
 import Menu from './Menu';
+import {ctxCartOrders} from '../context/cartOrderContext'
 
 import menu from '@icons/icon_menu.svg'
 import logo from  '@logos/logo_yard_sale.svg'
 import shoppingCart from '@icons/icon_shopping_cart.svg'
 
 const Header = () => {
+	const [state] = useContext(ctxCartOrders)
 	const [mostrarMenu, setMostrarMenu] = useState(false)
 
 	const toogleMenu = ()=>{
@@ -45,7 +47,8 @@ const Header = () => {
 					<li className="navbar-email">david@hotmail.com</li>
 					<li className="navbar-shopping-cart">
 						<img src={shoppingCart} alt="shopping cart" />
-						<div>2</div>
+						{state.carts.length>0 ? <div>{state.carts.length}</div>:null}
+						
 					</li>
 				</ul>				
 			</div>

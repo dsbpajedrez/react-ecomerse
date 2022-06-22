@@ -11,10 +11,12 @@ import CreateAccount from '../pages/CreateAccount';
 import Checkout from '../pages/Checkout';
 import Orders from '../pages/Orders';
 import NotFound from '../pages/NotFound';
+import CartOrderContex from '../context/cartOrderContext';
 import '../styles/global.css';
 
 const App = () => {
 	return (
+		<CartOrderContex>
 		<BrowserRouter>
 			<Layout>
 				<Switch>
@@ -31,6 +33,7 @@ const App = () => {
 				</Switch>
 			</Layout>
 		</BrowserRouter>
+		</CartOrderContex>
 	);
 }
 

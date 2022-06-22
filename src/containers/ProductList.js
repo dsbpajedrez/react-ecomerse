@@ -1,18 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import ProductItem from '../components/ProductItem';
 import '@styles/ProductList.scss';
+import useGetProducts from '../hooks/useGetProducts';
+const API_PRODUCTS ='https://api.escuelajs.co/api/v1/products'
 
 const ProductList = () => {
-	const API_PRODUCTS ='https://api.escuelajs.co/api/v1/products'
-	const [productos, setProductos] = useState([])
-
-	useEffect(()=>{
-		fetch(API_PRODUCTS)
-			.then(respuesta => respuesta.json())
-			.then(data => {
-				setProductos(data)
-			})
-	},[])
+	const productos= useGetProducts(API_PRODUCTS)
 	return (
 		<section className="main-container">
 			<div className="ProductList">
