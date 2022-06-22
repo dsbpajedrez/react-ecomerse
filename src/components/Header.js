@@ -7,13 +7,16 @@ import {ctxCartOrders} from '../context/cartOrderContext'
 import menu from '@icons/icon_menu.svg'
 import logo from  '@logos/logo_yard_sale.svg'
 import shoppingCart from '@icons/icon_shopping_cart.svg'
+import MyOrder from '../containers/MyOrder';
 
 const Header = () => {
 	const [state] = useContext(ctxCartOrders)
 	const [mostrarMenu, setMostrarMenu] = useState(false)
+	const[myOrders, setMyOrders] = useState(false)
 
 	const toogleMenu = ()=>{
 		setMostrarMenu(!mostrarMenu)
+		
 	}
 	return (
 		<>
@@ -42,11 +45,11 @@ const Header = () => {
 					</li>
 				</ul>
 			</div>
-			<div onClick={toogleMenu} className="navbar-right">
+			<div  className="navbar-right">
 				<ul>
-					<li className="navbar-email">david@hotmail.com</li>
+					<li className="navbar-email" onClick={toogleMenu}>david@hotmail.com</li>
 					<li className="navbar-shopping-cart">
-						<img src={shoppingCart} alt="shopping cart" />
+						<img src={shoppingCart} alt="shopping cart" onClick={()=>{setMyOrders(!myOrders)}} />
 						{state.carts.length>0 ? <div>{state.carts.length}</div>:null}
 						
 					</li>
@@ -57,6 +60,7 @@ const Header = () => {
 		</nav>
 		<div className='mostrar-menu'>
 			{mostrarMenu && (<Menu/>)}
+			{myOrders && <MyOrder/>}
 		</div>
 		</>
 	);

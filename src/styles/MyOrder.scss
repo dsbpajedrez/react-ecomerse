@@ -6,6 +6,12 @@
 	box-sizing: border-box;
 	position: absolute;
 	right: 0;
+	align-items: center;
+	background-color: aliceblue;
+	position: absolute;
+	top: 60px;
+	bottom: 0;
+	height: fit-content;
 }
 .title-container {
 	display: flex;
