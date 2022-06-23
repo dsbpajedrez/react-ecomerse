@@ -16,11 +16,12 @@ const MyOrder = () => {
 				<p className="title">My order</p>
 			</div>
 			<div className="my-order-content">
-				{state.carts.map(item=>
+				{state.carts.length>0 && state.carts.map(item=>
 				<OrderItem 
 				price={item.price} 
 				article={item.article}
 				image={item.image}
+				id={item.id}
 				/>)}
 				
 				<div className="order">

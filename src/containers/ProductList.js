@@ -14,7 +14,8 @@ const ProductList = () => {
 				key={item.id} 
 				price={item.price} 
 				image={item.category.image} 
-				article={item.title} 
+				article={item.title}
+				id={item.id} 
 				/>
 			))}			
 			</div>
